@@ -21,6 +21,10 @@ on:
         default: false
         type: boolean
 
+permissions:
+  contents: read
+  issues: write
+
 env:
   # 🎓 STUDENT/TEACHER FRIENDLY: Auto-enables on first manual run
   # You don't need to change this! Just run the workflow manually once to activate it.
