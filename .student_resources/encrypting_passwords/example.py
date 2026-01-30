@@ -20,7 +20,7 @@ hashed_password = bcrypt.hashpw(password=my_encoded_password, salt=salt)
 print(f"How actual password will appear in logs etc: {my_encoded_password.hex()}")
 
 # Python print statement will decode it but if the variable is logged, it will be logged as a string of bytes
-print(f"Actual Password: {my_encoded_password.decode()}")
+print("Actual Password: [REDACTED - do not log real passwords]")
 
 # Print Hashed Password
 print(f"Hashed Password: {hashed_password.decode()}")
