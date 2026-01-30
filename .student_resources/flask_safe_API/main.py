@@ -47,7 +47,7 @@ def add_film():
     api.logger.critical(f"User {info}")
     api.logger.critical(f"Has added the movie {data}")
     dbHandler.add_film(data)
-    return data, 201
+    return jsonify({"status": "created"}), 201
 
 
 if __name__ == "__main__":
