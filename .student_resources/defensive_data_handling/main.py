@@ -26,7 +26,7 @@ if __name__ == '__main__':
     try:
         print (f"The password as the byte string : {sanitiser.check_password(password).hex()} is ready to be encryted" )
     except TypeError:
-        logger.error(f"Type errors for password:{password}")
+        logger.error("Type error encountered while validating password input")
         print("TypeError has been logged")
     except ValueError as inst:
         print(f"Not a valid password because it has {inst.args}.")
