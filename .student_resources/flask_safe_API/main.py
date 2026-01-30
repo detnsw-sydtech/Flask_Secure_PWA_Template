@@ -51,4 +51,4 @@ def add_film():
 
 
 if __name__ == "__main__":
-    api.run(debug=True, host="0.0.0.0", port=3000)
+    api.run(host="0.0.0.0", port=3000)
