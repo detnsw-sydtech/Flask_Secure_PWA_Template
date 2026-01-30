@@ -4,6 +4,7 @@ from flask import request
 from flask import redirect
 from flask_cors import CORS
 import user_management as dbHandler
+from urllib.parse import urlparse
 
 # Code snippet for logging a message
 # app.logger.critical("message")
@@ -16,8 +17,12 @@ CORS(app)
 @app.route("/success.html", methods=["POST", "GET", "PUT", "PATCH", "DELETE"])
 def addFeedback():
     if request.method == "GET" and request.args.get("url"):
-        url = request.args.get("url", "")
-        return redirect(url, code=302)
+        target = request.args.get("url", "")
+        target = target.replace('\\', '')
+        parsed = urlparse(target)
+        if not parsed.netloc and not parsed.scheme:
+            return redirect(target, code=302)
+        return redirect("/", code=302)
     if request.method == "POST":
         feedback = request.form["feedback"]
         dbHandler.insertFeedback(feedback)
@@ -31,8 +36,12 @@ def addFeedback():
 @app.route("/signup.html", methods=["POST", "GET", "PUT", "PATCH", "DELETE"])
 def signup():
     if request.method == "GET" and request.args.get("url"):
-        url = request.args.get("url", "")
-        return redirect(url, code=302)
+        target = request.args.get("url", "")
+        target = target.replace('\\', '')
+        parsed = urlparse(target)
+        if not parsed.netloc and not parsed.scheme:
+            return redirect(target, code=302)
+        return redirect("/", code=302)
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -48,8 +57,12 @@ def signup():
 def home():
     # Simple Dynamic menu
     if request.method == "GET" and request.args.get("url"):
-        url = request.args.get("url", "")
-        return redirect(url, code=302)
+        target = request.args.get("url", "")
+        target = target.replace('\\', '')
+        parsed = urlparse(target)
+        if not parsed.netloc and not parsed.scheme:
+            return redirect(target, code=302)
+        return redirect("/", code=302)
     # Pass message to front end
     elif request.method == "GET":
         msg = request.args.get("msg", "")
