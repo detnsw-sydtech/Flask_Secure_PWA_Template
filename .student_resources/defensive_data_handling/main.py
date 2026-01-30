@@ -6,7 +6,7 @@ logging.basicConfig(filename='security_log.log', encoding='utf-8', level=logging
 
 if __name__ == '__main__':
     sample_password_valid = bool(sanitiser.simple_check_password('password'))
-    print (f"Sample password meets security requirements: {sample_password_valid}")
+    print("Sample password validation executed.")
     print (f"Make <HTML> web safe: {sanitiser.make_web_safe('<html>')}")
     print (f"Is 'name@example.com' an email address: {sanitiser.check_email('name@example.com')}")
     print (f"Is '123!' an name: {sanitiser.validate_name('123!')}")
